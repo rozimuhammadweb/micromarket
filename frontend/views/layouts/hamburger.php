@@ -27,8 +27,8 @@
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
-            <li class="active"><a href="./index.html">Home</a></li>
-            <li><a href="./shop-grid.html">Shop</a></li>
+            <li class="active"><a href="<?= \yii\helpers\Url::home() ?>">Home</a></li>
+            <li><a href="<?= \yii\helpers\Url::to(['site/shop']) ?>">Shop</a></li>
             <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
                     <li><a href="./shop-details.html">Shop Details</a></li>
@@ -37,8 +37,8 @@
                     <li><a href="./blog-details.html">Blog Details</a></li>
                 </ul>
             </li>
-            <li><a href="./blog.html">Blog</a></li>
-            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="<?= \yii\helpers\Url::to(['site/blog']) ?>">Blog</a></li>
+            <li><a href="<?= \yii\helpers\Url::to(['site/contact']) ?>">Contact</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>

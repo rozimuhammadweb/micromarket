@@ -21,6 +21,7 @@ AppAsset::register($this);
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
+    <?php $this->beginBody(); ?>
     <body>
     <?= $this->render('hamburger') ?>
     <?= $this->render('header') ?>
@@ -30,6 +31,8 @@ AppAsset::register($this);
     <?= Alert::widget() ?>
     <?= $content ?>
     <?= $this->render('footer') ?>
+    <?php $this->endBody(); ?>
+
     </body>
     </html>
 <?php $this->endPage();
