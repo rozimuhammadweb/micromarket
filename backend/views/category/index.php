@@ -31,7 +31,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     ['class' => 'yii\grid\SerialColumn'],
                     'title',
                     'is_popular',
-                    'status',
+                    [
+                        'attribute' => 'status',
+                        'value' => function ($model) {
+                            return $model->status == 1 ? 'Active' : 'In Active';
+                        },
+                    ],
                     [
                         'attribute' => 'imageFile',
                         'format' => 'raw',

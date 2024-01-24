@@ -1,37 +1,67 @@
 <?php
 
+use common\models\Category;
+use common\models\Product;
+use gofuroov\multilingual\widgets\ActiveForm;
+use mihaildev\ckeditor\CKEditor;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
 /** @var common\models\Product $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
+<div class="card card-primary card-outline ">
+    <div class="card-body">
+        <div class="product-form">
 
-<div class="product-form">
+            <?php $form = ActiveForm::begin(); ?>
+            <div class="row">
+                <div class="col-md-12">
+                    <?= $form->languageSwitcher($model) ?>
+                </div>
+                <div class="col-md-12">
+                    <?= $form->field($model, 'category_id')->widget(\kartik\select2\Select2::class, [
+                        'data' => ArrayHelper::map(Category::find()->all(), 'id', 'title'),
+                        'options' => ['placeholder' => 'Kategoriyani tanlang...'],
+                        'pluginOptions' => [
+                            'allowClear' => true,
+                        ],
+                    ]) ?>
+                </div>
 
-    <?php $form = ActiveForm::begin(); ?>
+                <div class="col-md-12">
+                    <?= $form->field($model, 'title')->textInput() ?>
+                </div>
+                <div class="col-md-12">
+                    <?= $form->field($model, 'short_description')->textInput() ?>
+                </div>
+                <div class="col-md-12">
+                    <?= $form->field($model, 'description')->widget(CKEditor::className(), [
+                        'editorOptions' => [
+                            'preset' => '4', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
+                            'inline' => false, //по умолчанию false
+                        ],
+                    ]); ?>
+                </div>
+                <div class="col-md-12">
+                    <?= $form->field($model, 'shipping')->textInput() ?>
+                </div>
+                <div class="col-md-12">
+                    <?= $form->field($model, 'price')->textInput() ?>
+                </div>
+                <div class="col-md-12">
+                    <?= $form->field($model, 'discount_percent')->textInput() ?>
+                </div>
+                <div class="col-md-12">
+                    <?= $form->field($model, 'availability')->textInput() ?>
+                </div>
+            </div>
+            <div class="form-group d-flex justify-content-end">
+                <?= Html::submitButton('Saqlash', ['class' => 'btn btn-primary  ml-2 px-5']) ?>
+            </div>
 
-    <?= $form->field($model, 'category_id')->textInput() ?>
-
-    <?= $form->field($model, 'price')->textInput() ?>
-
-    <?= $form->field($model, 'discount_percent')->textInput() ?>
-
-    <?= $form->field($model, 'availability')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+            <?php ActiveForm::end(); ?>
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

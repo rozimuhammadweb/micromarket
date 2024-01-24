@@ -2,11 +2,15 @@
 
 /** @var yii\web\View $this */
 
-$this->title = 'My Yii Application';
+use common\models\Category;
+use common\models\Product;
+
+$categories = Category::getCategories();
+$products = Product::getProducts();
 ?>
-<?= $this->render('partial/hero') ?>
-<?= $this->render('partial/category') ?>
-<?= $this->render('partial/feature') ?>
+<?= $this->render('partial/hero-normal') ?>
+<?= $this->render('partial/category', ['categories' => $categories]) ?>
+<?= $this->render('partial/feature', ['products' => $products]) ?>
 <?= $this->render('partial/banner') ?>
 <?= $this->render('partial/latest-product') ?>
 <?= $this->render('partial/blog') ?>

@@ -28,7 +28,10 @@
     "kartik-v/yii2-widget-switchinput": "dev-master",
     "kartik-v/yii2-sortable": "dev-master",
     "mohorev/yii2-upload-behavior": "*",
-    "gofuroov/yii2-multilingual": "^1.0"
+    "gofuroov/yii2-multilingual": "^1.0",
+    "zxbodya/yii2-gallery-manager": "*@dev",
+    "mihaildev/yii2-ckeditor": "*",
+    "kartik-v/yii2-widget-select2": "dev-master"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.1.0",

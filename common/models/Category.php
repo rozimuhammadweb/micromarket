@@ -9,6 +9,8 @@ use gofuroov\multilingual\db\MultilingualQuery;
 use mohorev\file\UploadImageBehavior;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "category".
@@ -27,12 +29,23 @@ class Category extends \yii\db\ActiveRecord
 {
     use MultilingualLabelsTrait;
 
+    public const STATUS_ACTIVE = 1;
+    public const STATUS_INACTIVE = 0;
+
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
         return 'category';
+    }
+
+    /**
+     * @return array|ActiveRecord[]
+     */
+    public static function getCategories()
+    {
+        return self::find()->andWhere(['status' => Category::STATUS_ACTIVE])->orderBy(['id' => SORT_DESC])->all();
     }
 
     public static function find()
@@ -45,9 +58,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             TimestampBehavior::class,
-            'blameable' => [
-                'class' => BlameableBehavior::class,
-            ],
+            BlameableBehavior::class,
             [
                 'class' => UploadImageBehavior::class,
                 'attribute' => 'imageFile',
@@ -92,12 +103,29 @@ class Category extends \yii\db\ActiveRecord
             'id' => 'ID',
             'sort_order' => 'Sort Order',
             'is_popular' => 'Is Popular',
+            'imageFile' => 'Image',
             'status' => 'Status',
-            'imageFile' => 'Image File',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'created_by' => 'Created By',
-            'updated_by' => 'Updated By',
+            'created_by' => 'Yaratdi',
+            'updated_by' => 'Tahrirladi',
+            'created_at' => 'Yaratilgan',
+            'updated_at' => 'Yangilangan',
         ];
     }
+
+    /**
+     * @return ActiveQuery
+     */
+    public function getCreatedByUser()
+    {
+        return $this->hasOne(User::class, ['id' => 'created_by']);
+    }
+
+    /**
+     * @return ActiveQuery
+     */
+    public function getUpdatedByUser()
+    {
+        return $this->hasOne(User::class, ['id' => 'updated_by']);
+    }
+
 }

@@ -32,12 +32,39 @@ $this->params['breadcrumbs'][] = $this->title;
                     'title',
                     'sort_order',
                     'is_popular',
-                    'status',
-                    'imageFile',
-                    'created_at',
-                    'updated_at',
-                    'created_by',
-                    'updated_by',
+                    [
+                        'attribute' => 'status',
+                        'value' => function ($model) {
+                            return $model->status == 1 ? 'Active' : 'In Active';
+                        },
+                    ],
+                    [
+                        'attribute' => 'imageFile',
+                        'format' => 'raw',
+                        'value' => function ($model) {
+                            return Html::img($model->getUploadUrl('imageFile'), ['class' => 'img-thumbnail', 'style' => 'width:200px ']);
+                        },
+                    ],
+                    [
+                        'attribute' => 'created_by',
+                        'value' => function ($model) {
+                            return $model->createdByUser ? $model->createdByUser->username : 'N/A';
+                        },
+                    ],
+                    [
+                        'attribute' => 'updated_by',
+                        'value' => function ($model) {
+                            return $model->createdByUser ? $model->createdByUser->username : 'N/A';
+                        },
+                    ],
+                    [
+                        'attribute' => 'created_at',
+                        'format' => ['date', 'php:Y-m-d H:i:s'],
+                    ],
+                    [
+                        'attribute' => 'updated_at',
+                        'format' => ['date', 'php:Y-m-d H:i:s'],
+                    ],
                 ],
             ]) ?>
         </div>

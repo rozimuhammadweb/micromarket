@@ -44,8 +44,7 @@
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Product
-                            <span class="right badge badge-danger">New</span>
-                        </p>
+                            </p>
                     </a>
                 </li>
 
