@@ -1,14 +1,12 @@
 <?php
 
 use common\models\Category;
-use common\models\Product;
 use gofuroov\multilingual\widgets\ActiveForm;
 use mihaildev\ckeditor\CKEditor;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var common\models\Product $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 <div class="card card-primary card-outline ">

@@ -2,7 +2,9 @@
 
 namespace backend\controllers;
 
+use common\models\Category;
 use common\models\LoginForm;
+use common\models\Product;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -62,7 +64,16 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $categories = Category::getCategories();
+        $products = Product::getProducts();
+        $latests = Product::getLatest();
+        $reviews = Product::getRandProducts();
+        return $this->render('index', [
+            'categories' => $categories,
+            'products' => $products,
+            'latests' => $latests,
+            'reviews' => $reviews,
+        ]);
     }
 
     /**

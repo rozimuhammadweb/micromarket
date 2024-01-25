@@ -2,7 +2,9 @@
 
 namespace frontend\controllers;
 
+use common\models\Category;
 use common\models\LoginForm;
+use common\models\Product;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\ResetPasswordForm;
@@ -74,7 +76,16 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $categories = Category::getCategories();
+        $products = Product::getProducts();
+        $latests = Product::getLatest();
+        $reviews = Product::getRandProducts();
+        return $this->render('index', [
+            'categories' => $categories,
+            'products' => $products,
+            'latests' => $latests,
+            'reviews' => $reviews,
+        ]);
     }
 
     /**
@@ -134,7 +145,20 @@ class SiteController extends Controller
 
     public function actionShop()
     {
-        return $this->render('shop');
+        $categoryFilter = Yii::$app->request->get('category');
+        $query = Product::find();
+        if ($categoryFilter) {
+            $query->andWhere(['category_id' => $categoryFilter]);
+        }
+        $products = $query->orderBy(['id' => SORT_DESC])->all();
+
+        $categories = Category::getCategories();
+        $latests = Product::getLatest();
+        return $this->render('shop', [
+            'categories' => $categories,
+            'products' => $products,
+            'latests' => $latests,
+        ]);
     }
 
     /**

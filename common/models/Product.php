@@ -2,9 +2,10 @@
 
 namespace common\models;
 
-use common\modules\galleryManager\GalleryBehavior;
 use backend\models\GalleryImage;
+use common\modules\galleryManager\GalleryBehavior;
 use gofuroov\multilingual\behaviors\MultilingualBehavior;
+use gofuroov\multilingual\db\MultilingualLabelsTrait;
 use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
 use Yii;
@@ -12,6 +13,7 @@ use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "product".
@@ -29,6 +31,7 @@ use yii\db\ActiveRecord;
  */
 class Product extends \yii\db\ActiveRecord
 {
+    use MultilingualLabelsTrait;
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;
@@ -50,6 +53,22 @@ class Product extends \yii\db\ActiveRecord
         return self::find()->orderBy(['id' => SORT_DESC])->all();
     }
 
+    /**
+     * @return array|ActiveRecord[]
+     */
+    public static function getLatest()
+    {
+        return self::find()->orderBy(['id' => SORT_DESC])->limit(3)->all();
+    }
+
+    /**
+     * @return array|ActiveRecord[]
+     */
+    public static function getRandProducts()
+    {
+        return self::find()->orderBy(new Expression('rand()'))->limit(3)->all();
+    }
+
     public function behaviors()
     {
         return [
@@ -58,9 +77,9 @@ class Product extends \yii\db\ActiveRecord
             'galleryBehavior' => [
                 'class' => GalleryBehavior::className(),
                 'type' => 'product',
-                'extension' => 'jpg',
+                'extension' => 'png',
                 'directory' => Yii::getAlias('@frontend/web') . '/uploads/products/',
-                'url' => '/uploads/products/',
+                'url' => Yii::getAlias('@frontend/web') . '/uploads/products/',
                 'versions' => [
                     'small' => function ($img) {
                         /** @var ImageInterface $img */
@@ -100,7 +119,8 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['shipping',], 'safe'],
+            [['title', 'short_description', 'description'], 'required'],
+            [['shipping', 'title', 'short_description', 'description'], 'safe'],
             [['category_id', 'discount_percent', 'availability', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
             [['price'], 'number'],
         ];
@@ -154,6 +174,7 @@ class Product extends \yii\db\ActiveRecord
      */
     public function getGalleryImagesAsArray()
     {
+
         return $this->getGalleryImages()->asArray();
     }
 
@@ -167,7 +188,6 @@ class Product extends \yii\db\ActiveRecord
             ->orderBy('rank ASC');
     }
 
-
     /**
      * Main image of the product
      * @return string
@@ -178,7 +198,7 @@ class Product extends \yii\db\ActiveRecord
         if (empty($images)) {
             return "/images/no-image-png";
         }
-        return $images[0 ?? '';
+        return $images[0] ?? '';
     }
 
     /**
@@ -194,7 +214,6 @@ class Product extends \yii\db\ActiveRecord
         }
         return $result;
     }
-
 
 
 }

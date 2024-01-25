@@ -1,4 +1,4 @@
- <!-- Featured Section Begin -->
+<!-- Featured Section Begin -->
 <section class="featured spad">
     <div class="container">
         <div class="row">
@@ -8,11 +8,10 @@
                 </div>
                 <div class="featured__controls">
                     <ul>
-                        <li class="active" data-filter="*">All</li>
-                        <li data-filter=".oranges">Oranges</li>
-                        <li data-filter=".fresh-meat">Fresh Meat</li>
-                        <li data-filter=".vegetables">Vegetables</li>
-                        <li data-filter=".fastfood">Fastfood</li>
+                        <li class="active" data-filter="*"><?= Yii::t('app', 'All') ?></li>
+                        <?php foreach ($categories as $category): ?>
+                            <li data-filter=".category_<?= $category->id ?>"><?= $category->title ?></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
@@ -30,8 +29,8 @@
                             </ul>
                         </div>
                         <div class="featured__item__text">
-                            <h6><a href="#"><?=$product->title?></a></h6>
-                            <h5>$30.00</h5>
+                            <h6><a href="#"><?= $product->title ?></a></h6>
+                            <h5><?= number_format($product->price, 2) ?></h5>
                         </div>
                     </div>
                 </div>
