@@ -2,9 +2,9 @@
 
 namespace common\models\search;
 
+use common\models\Product;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Product;
 
 /**
  * ProductSearch represents the model behind the search form of `common\models\Product`.
@@ -17,6 +17,7 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
+            [['title', 'short_description', 'description'], 'safe'],
             [['id', 'category_id', 'discount_percent', 'availability', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
             [['price'], 'number'],
         ];
@@ -40,7 +41,7 @@ class ProductSearch extends Product
      */
     public function search($params)
     {
-        $query = Product::find();
+        $query = Product::find()->joinWith('translation');
 
         // add conditions that should always apply here
 
@@ -67,7 +68,9 @@ class ProductSearch extends Product
             'updated_at' => $this->updated_at,
             'created_by' => $this->created_by,
             'updated_by' => $this->updated_by,
-        ]);
+        ])->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'short_description', $this->short_description])
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

@@ -1,6 +1,5 @@
 <?php
 
-use common\models\Product;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -34,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             return $model->category->title;
                         },
                     ],
+                    'title',
                     'price',
                     'discount_percent',
                     'availability',

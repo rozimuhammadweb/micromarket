@@ -6,7 +6,9 @@
                 <?php foreach ($categories as $category): ?>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="<?= $category->getUploadUrl('imageFile') ?>">
-                            <h5><a href="#"><?= $category->title ?></a></h5>
+                            <h5>
+                                <a href="<?= \yii\helpers\Url::to(['site/shop', 'category' => $category->id]) ?>"><?= $category->title ?></a>
+                            </h5>
                         </div>
                     </div>
                 <?php endforeach; ?>

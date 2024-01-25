@@ -162,6 +162,17 @@ class SiteController extends Controller
     }
 
     /**
+     * @return string
+     */
+    public function actionShopDetail($id)
+    {
+        $product = Product::findOne($id);
+        return $this->render('shop-detail', [
+            'product' => $product
+        ]);
+    }
+
+    /**
      * Signs user up.
      *
      * @return mixed

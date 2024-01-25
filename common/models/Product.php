@@ -79,7 +79,7 @@ class Product extends \yii\db\ActiveRecord
                 'type' => 'product',
                 'extension' => 'png',
                 'directory' => Yii::getAlias('@frontend/web') . '/uploads/products/',
-                'url' => Yii::getAlias('@frontend/web') . '/uploads/products/',
+                'url' => '/uploads/products/',
                 'versions' => [
                     'small' => function ($img) {
                         /** @var ImageInterface $img */
@@ -215,5 +215,20 @@ class Product extends \yii\db\ActiveRecord
         return $result;
     }
 
+    public function getRelatedProducts()
+    {
+        // Check if the product has a category
+        if ($this->category) {
+            // Use the category ID to find related products
+            return Product::find()
+                ->where(['category_id' => $this->category->id])
+                ->andWhere(['not', ['id' => $this->id]]) // Exclude the current product
+                ->limit(4) // Adjust the limit as needed
+                ->all();
+        }
+
+        // Return an empty array if the product doesn't have a category
+        return [];
+    }
 
 }

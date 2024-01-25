@@ -9,7 +9,7 @@
                     </div>
                     <ul style="display: none;">
                         <?php foreach ($categories as $category): ?>
-                            <li><a href="#"><?= $category->title ?></a></li>
+                            <li><a href="<?= \yii\helpers\Url::to(['site/shop', 'category' => $category->id]) ?>"><?= $category->title ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
