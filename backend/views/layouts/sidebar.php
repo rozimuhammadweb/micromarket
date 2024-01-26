@@ -44,7 +44,23 @@
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Product
-                            </p>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= \yii\helpers\Url::to(['/blog']) ?>" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Blog
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= \yii\helpers\Url::to(['/category-blog']) ?>" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Blog Category
+                        </p>
                     </a>
                 </li>
 
