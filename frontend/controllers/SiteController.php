@@ -2,9 +2,12 @@
 
 namespace frontend\controllers;
 
+use common\models\Blog;
 use common\models\Category;
+use common\models\CategoryBlog;
 use common\models\LoginForm;
 use common\models\Product;
+use common\models\Tags;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\ResetPasswordForm;
@@ -140,7 +143,44 @@ class SiteController extends Controller
      */
     public function actionBlog()
     {
-        return $this->render('blog');
+        $blogCategoryFilter = Yii::$app->request->get('category');
+        $blogsQuery = Blog::find()->orderBy(['id' => SORT_DESC]);
+
+        if ($blogCategoryFilter) {
+            $blogsQuery->andWhere(['category_id' => $blogCategoryFilter]);
+        }
+        $blogs = $blogsQuery->all();
+
+        $tags = Tags::getTags();
+        $blogCategories = CategoryBlog::getCategoriesBlog();
+        $recentNews = Blog::getRecentNews();
+
+        return $this->render('blog', [
+            'blogCategories' => $blogCategories,
+            'blogs' => $blogs,
+            'recentNews' => $recentNews,
+            'tags' => $tags,
+        ]);
+    }
+
+    public function actionChangeLang($lang)
+    {
+        Yii::$app->language = $lang;
+        Yii::$app->session['lang'] = $lang;
+        $referrer = Yii::$app->request->referrer;
+        return $this->redirect($referrer ?: Yii::$app->homeUrl);
+    }
+
+    /**
+     * @param $id
+     * @return string
+     */
+    public function actionBlogDetail($id)
+    {
+        $blog = Blog::findOne($id);
+        return $this->render('blog-detail', [
+            'blog' => $blog
+        ]);
     }
 
     public function actionShop()

@@ -31,7 +31,8 @@
     "gofuroov/yii2-multilingual": "^1.0",
     "zxbodya/yii2-gallery-manager": "*@dev",
     "mihaildev/yii2-ckeditor": "*",
-    "kartik-v/yii2-widget-select2": "dev-master"
+    "kartik-v/yii2-widget-select2": "dev-master",
+    "wokster/yii2-translation-manager": "v1.1@dev"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.1.0",

@@ -35,6 +35,15 @@ use yii\helpers\Html;
                 <div class="col-12">
                     <?= $form->field($model, 'short_description')->textInput() ?>
                 </div>
+                <div class="col-12">
+                    <?= $form->field($model, 'tags')->widget(\kartik\select2\Select2::class, [
+                        'data' => \yii\helpers\ArrayHelper::map(\common\models\Tags::find()->all(), 'id', 'title'),
+                        'options' => ['placeholder' => 'Select tags...', 'multiple' => true],
+                        'pluginOptions' => [
+                            'allowClear' => true,
+                        ],
+                    ]) ?>
+                </div>
                 <div class="col-md-12">
                     <?= $form->field($model, 'description')->widget(CKEditor::className(), [
                         'editorOptions' => [
@@ -43,6 +52,7 @@ use yii\helpers\Html;
                         ],
                     ]); ?>
                 </div>
+
                 <div class="col-md-6">
                     <?= $form->field($model, 'status')->widget(\kartik\switchinput\SwitchInput::class, []); ?>
                 </div>

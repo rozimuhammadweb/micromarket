@@ -2,45 +2,17 @@
 
 namespace backend\controllers;
 
-use common\models\Blog;
-use common\models\search\BlogSearch;
 use common\models\Tags;
-use Yii;
-use yii\filters\VerbFilter;
+use common\models\search\TagsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
 /**
- * BlogController implements the CRUD actions for Blog model.
+ * TagsController implements the CRUD actions for Tags model.
  */
-class BlogController extends Controller
+class TagsController extends Controller
 {
-    /**
-     * @param Blog $model
-     * @param array $tagIds
-     */
-    protected function saveTags($model, $tagIds)
-    {
-        $currentTags = $model->getTags()->select('id')->column();
-        $tagsToAdd = array_diff($tagIds, $currentTags);
-        $tagsToRemove = array_diff($currentTags, $tagIds);
-
-        // Remove old tags
-        foreach ($tagsToRemove as $tagId) {
-            $tag = Tags::findOne($tagId);
-            if ($tag) {
-                $model->unlink('tags', $tag, true);
-            }
-        }
-
-        // Add new tags
-        foreach ($tagsToAdd as $tagId) {
-            $tag = Tags::findOne($tagId);
-            if ($tag) {
-                $model->link('tags', $tag);
-            }
-        }
-    }
     /**
      * @inheritDoc
      */
@@ -60,13 +32,13 @@ class BlogController extends Controller
     }
 
     /**
-     * Lists all Blog models.
+     * Lists all Tags models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new BlogSearch();
+        $searchModel = new TagsSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -76,7 +48,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Displays a single Blog model.
+     * Displays a single Tags model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -89,36 +61,16 @@ class BlogController extends Controller
     }
 
     /**
-     * Finds the Blog model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id ID
-     * @return Blog the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Blog::findOne(['id' => $id])) !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
-    }
-
-    /**
-     * Creates a new Blog model.
+     * Creates a new Tags model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Blog();
+        $model = new Tags();
 
         if ($this->request->isPost) {
-            $tagIds = Yii::$app->request->post('Blog')['tags'];
             if ($model->load($this->request->post()) && $model->save()) {
-                if (!empty($tagIds)) {
-                    $this->saveTags($model, $tagIds);
-                }
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -131,13 +83,7 @@ class BlogController extends Controller
     }
 
     /**
-     * @param $tagIds
-     * @return void
-     */
-
-
-    /**
-     * Updates an existing Blog model.
+     * Updates an existing Tags model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -148,12 +94,6 @@ class BlogController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            $tagIds = Yii::$app->request->post('Blog')['tags'];
-            if (!empty($tagIds)) {
-                $this->saveTags($model, $tagIds);
-            } else {
-                $model->unlinkAll('tags', true);
-            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -163,7 +103,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Deletes an existing Blog model.
+     * Deletes an existing Tags model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -174,5 +114,21 @@ class BlogController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Finds the Tags model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param int $id ID
+     * @return Tags the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Tags::findOne(['id' => $id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

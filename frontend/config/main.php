@@ -1,4 +1,8 @@
 <?php
+
+use common\components\LanguageHelper;
+use yii\web\Application;
+
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -47,5 +51,10 @@ return [
         ],
 
     ],
+    'on beforeAction' => function ($event) {
+        if (Yii::$app instanceof Application) {
+            LanguageHelper::setLanguage();
+        }
+    },
     'params' => $params,
 ];

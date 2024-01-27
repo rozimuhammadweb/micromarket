@@ -7,4 +7,11 @@ return [
     'user.passwordResetTokenExpire' => 3600,
     'user.passwordMinLength' => 8,
     'bsDependencyEnabled' => false,
+    'languageParam' => 'lang',
+    'languages' => [
+        'uz' => "O'zbekcha",
+        'ru' => "Русский",
+        'en' => "English",
+    ],
+    'defaultLanguage' => 'uz',
 ];

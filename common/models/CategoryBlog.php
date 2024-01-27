@@ -104,4 +104,5 @@ class CategoryBlog extends \yii\db\ActiveRecord
         return $this->hasOne(User::class, ['id' => 'updated_by']);
     }
 
+
 }

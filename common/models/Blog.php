@@ -4,10 +4,12 @@ namespace common\models;
 
 use gofuroov\multilingual\behaviors\MultilingualBehavior;
 use gofuroov\multilingual\db\MultilingualLabelsTrait;
+use gofuroov\multilingual\db\MultilingualQuery;
 use mohorev\file\UploadImageBehavior;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "blog".
@@ -26,12 +28,37 @@ class Blog extends \yii\db\ActiveRecord
 {
     use MultilingualLabelsTrait;
 
+    public const STATUS_ACTIVE = 1;
+    public const STATUS_INACTIVE = 0;
+
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
         return 'blog';
+    }
+
+    /**
+     * @return array|ActiveRecord[]
+     */
+    public static function getBlogs()
+    {
+        return self::find()->andWhere(['status' => Blog::STATUS_ACTIVE])->orderBy(['id' => SORT_DESC])->all();
+    }
+
+    /**
+     * @return MultilingualQuery|ActiveQuery
+     */
+    public static function find()
+    {
+        $query = new MultilingualQuery(get_called_class());
+        return $query->multilingual();
+    }
+
+    public static function getRecentNews()
+    {
+        return self::find()->andWhere(['status' => Blog::STATUS_ACTIVE])->orderBy(['id' => SORT_DESC])->limit(3)->all();
     }
 
     public function behaviors()
@@ -112,4 +139,9 @@ class Blog extends \yii\db\ActiveRecord
         return $this->hasOne(CategoryBlog::class, ['id' => 'category_id']);
     }
 
+    public function getTags()
+    {
+        return $this->hasMany(Tags::class, ['id' => 'tag_id'])
+            ->viaTable('blog_tags', ['blog_id' => 'id']);
+    }
 }

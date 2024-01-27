@@ -41,7 +41,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="<?= \yii\helpers\Url::to(['/product']) ?>" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="fa fa-check-square ml-1 pr-2" aria-hidden="true"></i>
                         <p>
                             Product
                         </p>
@@ -49,7 +49,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="<?= \yii\helpers\Url::to(['/blog']) ?>" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="fa fa-hashtag ml-1 pr-2" aria-hidden="true"></i>
                         <p>
                             Blog
                         </p>
@@ -57,9 +57,24 @@
                 </li>
                 <li class="nav-item">
                     <a href="<?= \yii\helpers\Url::to(['/category-blog']) ?>" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="fa fa-clipboard ml-1 pr-2" aria-hidden="true"></i>
                         <p>
                             Blog Category
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= \yii\helpers\Url::to(['/tags']) ?>" class="nav-link">
+                        <i class="fa fa-tags ml-1 pr-2"></i>
+                        <p>
+                            Tags
+                        </p>
+                    </a>
+                </li><li class="nav-item">
+                    <a href="<?= \yii\helpers\Url::to(['/translate-manager']) ?>" class="nav-link">
+                        <i class="fa fa-tags ml-1 pr-2"></i>
+                        <p>
+                            Translation
                         </p>
                     </a>
                 </li>
