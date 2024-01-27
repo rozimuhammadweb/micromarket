@@ -70,11 +70,20 @@
                             Tags
                         </p>
                     </a>
-                </li><li class="nav-item">
+                </li>
+                <li class="nav-item">
                     <a href="<?= \yii\helpers\Url::to(['/translate-manager']) ?>" class="nav-link">
                         <i class="fa fa-tags ml-1 pr-2"></i>
                         <p>
                             Translation
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= \yii\helpers\Url::to(['/setting']) ?>" class="nav-link">
+                        <i class="fa fa fa-cogs ml-1 pr-2"></i>
+                        <p>
+                            Setting
                         </p>
                     </a>
                 </li>

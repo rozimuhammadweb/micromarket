@@ -23,29 +23,29 @@
             <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                 <div class="contact__widget">
                     <span class="icon_phone"></span>
-                    <h4>Phone</h4>
-                    <p>+01-3-8888-6868</p>
+                    <h4><?= Yii::t('app', 'Phone') ?></h4>
+                    <p><?= $setting->number ?></p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                 <div class="contact__widget">
                     <span class="icon_pin_alt"></span>
-                    <h4>Address</h4>
-                    <p>60-49 Road 11378 New York</p>
+                    <h4><?= Yii::t('app', 'Address') ?></h4>
+                    <p><?= $setting->address ?></p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                 <div class="contact__widget">
                     <span class="icon_clock_alt"></span>
-                    <h4>Open time</h4>
-                    <p>10:00 am to 23:00 pm</p>
+                    <h4><?= Yii::t('app', 'Open time') ?></h4>
+                    <p><?= $setting->working_time ?></p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                 <div class="contact__widget">
                     <span class="icon_mail_alt"></span>
-                    <h4>Email</h4>
-                    <p>hello@colorlib.com</p>
+                    <h4><?= Yii::t('app', 'Email') ?></h4>
+                    <p><?= $setting->email ?></p>
                 </div>
             </div>
         </div>
@@ -56,15 +56,17 @@
 <!-- Map Begin -->
 <div class="map">
     <iframe
-            src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d56691.31171179592!2d71.53234030118958!3d40.42229269671443!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDDCsDI1JzAzLjEiTiA3McKwMzAnNTkuOCJF!5e0!3m2!1sen!2s!4v1705990204461!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d56691.31171179592!2d71.53234030118958!3d40.42229269671443!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDDCsDI1JzAzLjEiTiA3McKwMzAnNTkuOCJF!5e0!3m2!1sen!2s!4v1705990204461!5m2!1sen!2s"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
             height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
     <div class="map-inside">
         <i class="icon_pin"></i>
         <div class="inside-widget">
             <h4>New York</h4>
             <ul>
-                <li>Phone: +12-345-6789</li>
-                <li>Add: 16 Creek Ave. Farmingdale, NY</li>
+                <li><?= Yii::t('app', 'Phone') ?>: <?= $setting->number ?></li>
+                <li><?= Yii::t('app', 'Address') ?>: <?= $setting->address ?></li>
             </ul>
         </div>
     </div>

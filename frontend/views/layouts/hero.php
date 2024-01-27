@@ -5,11 +5,13 @@
                 <div class="hero__categories">
                     <div class="hero__categories__all">
                         <i class="fa fa-bars"></i>
-                        <span>All departments</span>
+                        <span><?= Yii::t('app', 'All departments') ?></span>
                     </div>
                     <ul style="display: none;">
                         <?php foreach ($categories as $category): ?>
-                            <li><a href="<?= \yii\helpers\Url::to(['site/shop', 'category' => $category->id]) ?>"><?= $category->title ?></a></li>
+                            <li>
+                                <a href="<?= \yii\helpers\Url::to(['site/shop', 'category' => $category->id]) ?>"><?= $category->title ?></a>
+                            </li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
@@ -27,8 +29,8 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="hero__search__phone__text">
-                            <h5>+65 11.188.888</h5>
-                            <span>support 24/7 time</span>
+                            <h5><?= $setting->number ?></h5>
+                            <span><?= Yii::t('app', 'Support 24/7 time') ?></span>
                         </div>
                     </div>
                 </div>

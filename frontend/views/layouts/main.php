@@ -5,6 +5,7 @@
 /** @var string $content */
 
 use common\models\Category;
+use common\models\Setting;
 use common\widgets\Alert;
 use frontend\assets\AppAsset;
 use yii\bootstrap4\Breadcrumbs;
@@ -12,6 +13,7 @@ use yii\bootstrap4\Html;
 
 AppAsset::register($this);
 $categories = Category::getCategories();
+$setting = Setting::getSetting()
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>
@@ -26,8 +28,8 @@ $categories = Category::getCategories();
     <?php $this->beginBody(); ?>
     <body>
     <?= $this->render('hamburger') ?>
-    <?= $this->render('header') ?>
-    <?= $this->render('hero', ['categories' => $categories]) ?>
+    <?= $this->render('header', ['setting' => $setting]) ?>
+    <?= $this->render('hero', ['categories' => $categories, 'setting' => $setting]) ?>
     <?= Breadcrumbs::widget([
         'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
     ]) ?>

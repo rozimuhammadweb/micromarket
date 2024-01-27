@@ -7,6 +7,7 @@ use common\models\Category;
 use common\models\CategoryBlog;
 use common\models\LoginForm;
 use common\models\Product;
+use common\models\Setting;
 use common\models\Tags;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResendVerificationEmailForm;
@@ -133,7 +134,8 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
-        return $this->render('contact');
+        $setting = Setting::getSetting();
+        return $this->render('contact', ['setting' => $setting]);
     }
 
     /**
@@ -166,10 +168,11 @@ class SiteController extends Controller
     public function actionChangeLang($lang)
     {
         Yii::$app->language = $lang;
-        Yii::$app->session['lang'] = $lang;
+        Yii::$app->session->set('lang', $lang);
         $referrer = Yii::$app->request->referrer;
         return $this->redirect($referrer ?: Yii::$app->homeUrl);
     }
+
 
     /**
      * @param $id
