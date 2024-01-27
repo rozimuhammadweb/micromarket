@@ -34,7 +34,6 @@
                                         <li>
                                             <i class="fa fa-calendar-o"></i> <?= Yii::$app->formatter->asDate($blog->created_at, 'long') ?>
                                         </li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
                                     </ul>
                                     <h5><a href="#"><?= $blog->title ?></a></h5>
                                     <p><?= $blog->short_description ?> </p>

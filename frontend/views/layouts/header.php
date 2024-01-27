@@ -24,7 +24,7 @@ use yii\helpers\Url;
                             <a href="#"><i class="fa fa-pinterest-p"></i></a>
                         </div>
                         <div class="header__top__right__language">
-                            <img src="img/language.png" alt="">
+                            <img src="language.png" alt="">
                             <div><?= Yii::$app->language ?></div>
                             <span class="arrow_carrot-down"></span>
                             <ul>

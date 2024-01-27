@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Banner;
 use common\models\Blog;
 use common\models\Category;
 use common\models\CategoryBlog;
@@ -84,11 +85,15 @@ class SiteController extends Controller
         $products = Product::getProducts();
         $latests = Product::getLatest();
         $reviews = Product::getRandProducts();
+        $blogs = Blog::getBlogs();
+        $banner = Banner::getBanner();
         return $this->render('index', [
             'categories' => $categories,
             'products' => $products,
             'latests' => $latests,
             'reviews' => $reviews,
+            'blogs' => $blogs,
+            'banner' => $banner
         ]);
     }
 

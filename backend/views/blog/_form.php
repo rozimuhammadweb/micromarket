@@ -13,9 +13,7 @@ use yii\helpers\Html;
 <div class="card card-primary card-outline ">
     <div class="card-body">
         <div class="blog-form">
-
             <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-
             <div class="row">
                 <div class="col-md-12">
                     <?= $form->languageSwitcher($model) ?>

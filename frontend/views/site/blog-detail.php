@@ -8,7 +8,6 @@
                     <ul>
                         <li>By Michael Scofield</li>
                         <li>January 14, 2019</li>
-                        <li>8 Comments</li>
                     </ul>
                 </div>
             </div>
@@ -49,13 +48,6 @@
                                     </li>
                                     <li><span>Tags:</span> All, Trending, Cooking, Healthy Food, Life Style</li>
                                 </ul>
-                                <div class="blog__details__social">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                                    <a href="#"><i class="fa fa-envelope"></i></a>
-                                </div>
                             </div>
                         </div>
                     </div>
