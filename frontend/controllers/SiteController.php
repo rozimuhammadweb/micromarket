@@ -144,6 +144,14 @@ class SiteController extends Controller
     }
 
     /**
+     * @return string
+     */
+    public function actionShoppingCard()
+    {
+        return $this->render('shopping-card');
+    }
+
+    /**
      * Displays about page.
      *
      * @return mixed
@@ -207,6 +215,14 @@ class SiteController extends Controller
             'products' => $products,
             'latests' => $latests,
         ]);
+    }
+
+    /**
+     * @return string
+     */
+    public function actionCheckout()
+    {
+        return $this->render('checkout');
     }
 
     /**

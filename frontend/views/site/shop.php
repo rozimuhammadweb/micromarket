@@ -1,4 +1,3 @@
-
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="/img/breadcrumb.jpg">
     <div class="container">
@@ -56,7 +55,8 @@
                                 <div class="latest-prdouct__slider__item">
                                     <?php /** @var TYPE_NAME $latests */
                                     foreach ($latests as $latest): ?>
-                                        <a href="#" class="latest-product__item">
+                                        <a href="<?= \yii\helpers\Url::to(['site/shop-detail', 'id' => $latest->id]) ?>"
+                                           class="latest-product__item">
                                             <div class="latest-product__item__pic">
                                                 <img src="<?= $latest->getImage() ?>" alt="img">
                                             </div>
@@ -74,29 +74,27 @@
             </div>
             <div class="col-lg-9 col-md-7">
                 <div class="row">
-                        <?php foreach ($products as $product): ?>
-                            <div class="col-lg-3 col-md-4 col-sm-6 mix category_<?= $product->category_id ?>">
-                                <div class="featured__item">
-                                    <div class="featured__item__pic set-bg" data-setbg="<?= $product->getImage('medium') ?>">
-                                        <ul class="featured__item__pic__hover">
-                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="<?= \yii\helpers\Url::to(['site/shop-detail', 'id' => $product->id]) ?>"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="featured__item__text">
-                                        <h6><a href="<?= \yii\helpers\Url::to(['site/shop-detail', 'id' => $product->id]) ?>"><?= $product->title ?></a></h6>
-                                        <h5><?= number_format($product->price, 2) ?></h5>
-                                    </div>
+                    <?php foreach ($products as $product): ?>
+                        <div class="col-lg-3 col-md-4 col-sm-6 mix category_<?= $product->category_id ?>">
+                            <div class="featured__item">
+                                <div class="featured__item__pic set-bg"
+                                     data-setbg="<?= $product->getImage('medium') ?>">
+                                    <ul class="featured__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li>
+                                            <a href="<?= \yii\helpers\Url::to(['site/shop-detail', 'id' => $product->id]) ?>"><i
+                                                        class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="featured__item__text">
+                                    <h6>
+                                        <a href="<?= \yii\helpers\Url::to(['site/shop-detail', 'id' => $product->id]) ?>"><?= $product->title ?></a>
+                                    </h6>
+                                    <h5><?= number_format($product->price, 2) ?></h5>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
-                </div>
-                <div class="product__pagination">
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

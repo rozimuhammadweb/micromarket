@@ -24,8 +24,6 @@
                         <div class="featured__item__pic set-bg" data-setbg="<?= $product->getImage('medium') ?>">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <!-- Update product link to include product ID -->
                                 <li><a href="<?= \yii\helpers\Url::to(['site/shop-detail', 'id' => $product->id]) ?>"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>

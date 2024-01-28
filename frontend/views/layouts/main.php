@@ -35,7 +35,7 @@ $setting = Setting::getSetting()
     ]) ?>
     <?= Alert::widget() ?>
     <?= $content ?>
-    <?= $this->render('footer') ?>
+    <?= $this->render('footer', ['setting' => $setting]) ?>
     <?php $this->endBody(); ?>
 
     </body>
