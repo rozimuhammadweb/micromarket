@@ -10,7 +10,7 @@
                         <span><?= $banner->name ?></span>
                         <h2><?= $banner->title ?></h2>
                         <p><?= $banner->subtitle ?></p>
-                        <a href="#" class="primary-btn"><?= Yii::t('app', 'SHOP NOW') ?></a>
+                        <a href="<?= \yii\helpers\Url::to(['shop/index'])?>" class="primary-btn"><?= Yii::t('app', 'SHOP NOW') ?></a>
                     </div>
                 </div>
             </div>

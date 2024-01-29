@@ -2,18 +2,16 @@
 
 namespace backend\controllers;
 
-use common\models\Banner;
-use common\models\search\BannerSearch;
-use Yii;
-use yii\filters\VerbFilter;
+use common\models\Social;
+use common\models\search\SocialSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\web\Response;
+use yii\filters\VerbFilter;
 
 /**
- * BannerController implements the CRUD actions for Banner model.
+ * SocialController implements the CRUD actions for Social model.
  */
-class BannerController extends Controller
+class SocialController extends Controller
 {
     /**
      * @inheritDoc
@@ -34,13 +32,13 @@ class BannerController extends Controller
     }
 
     /**
-     * Lists all Banner models.
+     * Lists all Social models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new BannerSearch();
+        $searchModel = new SocialSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -50,7 +48,7 @@ class BannerController extends Controller
     }
 
     /**
-     * Displays a single Banner model.
+     * Displays a single Social model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -63,50 +61,13 @@ class BannerController extends Controller
     }
 
     /**
-     * Finds the Banner model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id ID
-     * @return Banner the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Banner::findOne(['id' => $id])) !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
-    }
-
-    /**
-     * @param $id
-     * @return Response
-     * @throws NotFoundHttpException
-     */
-    public function actionToggleStatus($id)
-    {
-        $model = $this->findModel($id);
-
-        $model->status = $model->status == Banner::STATUS_ACTIVE ? Banner::STATUS_INACTIVE : Banner::STATUS_ACTIVE;
-
-        if ($model->save(false)) {
-            $statusText = $model->status == Banner::STATUS_ACTIVE ? 'activated' : 'deactivated';
-            Yii::$app->session->setFlash('success', "Setting successfully {$statusText}.");
-        } else {
-            Yii::$app->session->setFlash('error', 'Error toggling status.');
-        }
-
-        return $this->redirect(['index']);
-    }
-
-    /**
-     * Creates a new Banner model.
+     * Creates a new Social model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Banner();
+        $model = new Social();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -122,7 +83,7 @@ class BannerController extends Controller
     }
 
     /**
-     * Updates an existing Banner model.
+     * Updates an existing Social model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -142,7 +103,7 @@ class BannerController extends Controller
     }
 
     /**
-     * Deletes an existing Banner model.
+     * Deletes an existing Social model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -153,5 +114,21 @@ class BannerController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Finds the Social model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param int $id ID
+     * @return Social the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Social::findOne(['id' => $id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

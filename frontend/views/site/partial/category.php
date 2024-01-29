@@ -7,7 +7,7 @@
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="<?= $category->getUploadUrl('imageFile') ?>">
                             <h5>
-                                <a href="<?= \yii\helpers\Url::to(['site/shop', 'category' => $category->id]) ?>"><?= $category->title ?></a>
+                                <a href="<?= \yii\helpers\Url::to(['shop/index', 'category' => $category->id]) ?>"><?= $category->title ?></a>
                             </h5>
                         </div>
                     </div>

@@ -29,7 +29,7 @@
                     </div>
                     <div class="product__details__pic__slider owl-carousel">
                         <?php foreach ($product->getBehavior('galleryBehavior')->getImages() as $image): ?>
-                            <img data-imgbigurl="" src="<?= $image->getUrl('medium') ?>" alt="">
+                            <img data-imgbigurl="<?= $image->getUrl('medium') ?>" src="<?= $image->getUrl('medium') ?>" alt="">
                         <?php endforeach; ?>
                     </div>
                 </div>

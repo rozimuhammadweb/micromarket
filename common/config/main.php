@@ -22,6 +22,14 @@ return [
                     'forceTranslation' => true,
                     //'enableCaching' => false,
                     //'cachingDuration' => 3600,
+                ],
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'forceTranslation' => true,
+                    'fileMap' => [
+                        '@frontend/language' => 'app.php',
+                        'app/error' => 'error.php',
+                    ],
                 ]
             ],
         ],

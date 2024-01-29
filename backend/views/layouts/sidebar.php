@@ -95,6 +95,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?= \yii\helpers\Url::to(['/social']) ?>" class="nav-link">
+                        <i class="fa fa-address-card ml-1 pr-2" aria-hidden="true"></i>
+                        <p>
+                            Social Links
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

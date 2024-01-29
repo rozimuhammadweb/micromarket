@@ -5,12 +5,10 @@ namespace frontend\controllers;
 use common\models\Banner;
 use common\models\Blog;
 use common\models\Category;
-use common\models\CategoryBlog;
 use common\models\LoginForm;
 use common\models\MessageData;
 use common\models\Product;
 use common\models\Setting;
-use common\models\Tags;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\ResetPasswordForm;
@@ -144,42 +142,6 @@ class SiteController extends Controller
         $setting = Setting::getSetting();
         return $this->render('contact', ['setting' => $setting]);
     }
-
-    /**
-     * @return string
-     */
-    public function actionShoppingCard()
-    {
-        return $this->render('shopping-card');
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return mixed
-     */
-    public function actionBlog()
-    {
-        $blogCategoryFilter = Yii::$app->request->get('category');
-        $blogsQuery = Blog::find()->orderBy(['id' => SORT_DESC]);
-
-        if ($blogCategoryFilter) {
-            $blogsQuery->andWhere(['category_id' => $blogCategoryFilter]);
-        }
-        $blogs = $blogsQuery->all();
-
-        $tags = Tags::getTags();
-        $blogCategories = CategoryBlog::getCategoriesBlog();
-        $recentNews = Blog::getRecentNews();
-
-        return $this->render('blog', [
-            'blogCategories' => $blogCategories,
-            'blogs' => $blogs,
-            'recentNews' => $recentNews,
-            'tags' => $tags,
-        ]);
-    }
-
     /**
      * @param $lang
      * @return Response
@@ -215,36 +177,6 @@ class SiteController extends Controller
     }
 
     /**
-     * @param $id
-     * @return string
-     */
-    public function actionBlogDetail($id)
-    {
-        $blog = Blog::findOne($id);
-        return $this->render('blog-detail', [
-            'blog' => $blog
-        ]);
-    }
-
-    public function actionShop()
-    {
-        $categoryFilter = Yii::$app->request->get('category');
-        $query = Product::find();
-        if ($categoryFilter) {
-            $query->andWhere(['category_id' => $categoryFilter]);
-        }
-        $products = $query->orderBy(['id' => SORT_DESC])->all();
-
-        $categories = Category::getCategories();
-        $latests = Product::getLatest();
-        return $this->render('shop', [
-            'categories' => $categories,
-            'products' => $products,
-            'latests' => $latests,
-        ]);
-    }
-
-    /**
      * @return string
      */
     public function actionCheckout()
@@ -252,16 +184,6 @@ class SiteController extends Controller
         return $this->render('checkout');
     }
 
-    /**
-     * @return string
-     */
-    public function actionShopDetail($id)
-    {
-        $product = Product::findOne($id);
-        return $this->render('shop-detail', [
-            'product' => $product
-        ]);
-    }
 
     /**
      * Signs user up.

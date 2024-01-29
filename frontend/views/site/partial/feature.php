@@ -24,11 +24,14 @@
                         <div class="featured__item__pic set-bg" data-setbg="<?= $product->getImage('medium') ?>">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="<?= \yii\helpers\Url::to(['site/shop-detail', 'id' => $product->id]) ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                <li><a href="<?= \yii\helpers\Url::to(['shop/shop-detail', 'id' => $product->id]) ?>"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="featured__item__text">
-                            <h6><a href="<?= \yii\helpers\Url::to(['site/shop-detail', 'id' => $product->id]) ?>"><?= $product->title ?></a></h6>
+                            <h6>
+                                <a href="<?= \yii\helpers\Url::to(['shop/shop-detail', 'id' => $product->id]) ?>"><?= $product->title ?></a>
+                            </h6>
                             <h5><?= number_format($product->price, 2) ?></h5>
                         </div>
                     </div>

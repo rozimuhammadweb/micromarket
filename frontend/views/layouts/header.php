@@ -53,13 +53,13 @@ use yii\helpers\Url;
                 <nav class="header__menu">
                     <ul>
                         <li<?= Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index' ? ' class="active"' : '' ?>>
-                            <a href="<?= \yii\helpers\Url::to(['index']) ?>"><?= Yii::t('app', 'Home') ?></a>
+                            <a href="<?= \yii\helpers\Url::to(['site/index']) ?>"><?= Yii::t('app', 'Home') ?></a>
                         </li>
                         <li<?= Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'shop' ? ' class="active"' : '' ?>>
-                            <a href="<?= \yii\helpers\Url::to(['site/shop']) ?>"><?= Yii::t('app', 'Shop') ?></a>
+                            <a href="<?= \yii\helpers\Url::to(['shop/index']) ?>"><?= Yii::t('app', 'Shop') ?></a>
                         </li>
                         <li<?= Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'blog' ? ' class="active"' : '' ?>>
-                            <a href="<?= \yii\helpers\Url::to(['site/blog']) ?>"><?= Yii::t('app', 'Blog') ?></a>
+                            <a href="<?= \yii\helpers\Url::to(['blog/index']) ?>"><?= Yii::t('app', 'Blog') ?></a>
                         </li>
                         <li<?= Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'contact' ? ' class="active"' : '' ?>>
                             <a href="<?= \yii\helpers\Url::to(['site/contact']) ?>"><?= Yii::t('app', 'Contact') ?></a>
@@ -71,7 +71,7 @@ use yii\helpers\Url;
                 <div class="header__cart">
                     <ul>
                         <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                        <li><a href="<?= Url::to(['site/shopping-card']) ?>"><i class="fa fa-shopping-bag"></i>
+                        <li><a href="<?= Url::to(['shop/shopping-card']) ?>"><i class="fa fa-shopping-bag"></i>
                                 <span>3</span></a></li>
                     </ul>
                     <div class="header__cart__price">item: <span>$150.00</span></div>
