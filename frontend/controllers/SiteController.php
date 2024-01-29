@@ -7,6 +7,7 @@ use common\models\Blog;
 use common\models\Category;
 use common\models\CategoryBlog;
 use common\models\LoginForm;
+use common\models\MessageData;
 use common\models\Product;
 use common\models\Setting;
 use common\models\Tags;
@@ -21,6 +22,7 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
+use yii\web\Response;
 
 /**
  * Site controller
@@ -178,6 +180,10 @@ class SiteController extends Controller
         ]);
     }
 
+    /**
+     * @param $lang
+     * @return Response
+     */
     public function actionChangeLang($lang)
     {
         Yii::$app->language = $lang;
@@ -186,6 +192,27 @@ class SiteController extends Controller
         return $this->redirect($referrer ?: Yii::$app->homeUrl);
     }
 
+    public function actionConsultation()
+    {
+        $model = new MessageData();
+        $result = [];
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
+            $result = [
+                'success' => true,
+                'message' => "Ma'lumot saqlandi"
+            ];
+            Yii::$app->session->setFlash('success', 'Message sent successfully!');
+            return $this->redirect('contact');
+        } else {
+            $result = [
+                'success' => false,
+                'message' => $model->getErrors()
+            ];
+            Yii::$app->session->setFlash('error', 'Error sending message.');
+        }
+        return $this->redirect(['contact']);
+    }
 
     /**
      * @param $id
