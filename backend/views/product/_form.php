@@ -7,7 +7,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var yii\widgets\ActiveForm $form */
+/** @var gofuroov\multilingual\ActiveForm $form */
 ?>
 <div class="card card-primary card-outline ">
     <div class="card-body">

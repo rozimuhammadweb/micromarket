@@ -176,14 +176,6 @@ class SiteController extends Controller
         return $this->redirect(['contact']);
     }
 
-    /**
-     * @return string
-     */
-    public function actionCheckout()
-    {
-        return $this->render('checkout');
-    }
-
 
     /**
      * Signs user up.

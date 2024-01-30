@@ -33,11 +33,11 @@ class BlogController extends Controller
      */
     public function actionIndex()
     {
-        $blogCategoryFilter = Yii::$app->request->get('category');
+        $blogCategoryFilter = Yii::$app->request->get('slug');
         $blogsQuery = Blog::find()->orderBy(['id' => SORT_DESC]);
 
         if ($blogCategoryFilter) {
-            $blogsQuery->andWhere(['category_id' => $blogCategoryFilter]);
+            $blogsQuery->andWhere(['slug' => $blogCategoryFilter]);
         }
         $blogs = $blogsQuery->all();
 
@@ -57,9 +57,9 @@ class BlogController extends Controller
      * @param $id
      * @return string
      */
-    public function actionBlogDetail($id)
+    public function actionBlogDetail($slug)
     {
-        $blog = Blog::findOne($id);
+        $blog = Blog::findOne(['slug' => $slug]);
         return $this->render('blog-detail', [
             'blog' => $blog
         ]);

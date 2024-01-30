@@ -22,7 +22,7 @@
                                 </li>
                             </ul>
                             <h5>
-                                <a href="<?= \yii\helpers\Url::to(['blog/blog-detail', 'id' => $blog->id]) ?>"><?= $blog->title ?></a>
+                                <a href="<?= \yii\helpers\Url::to(['blog/blog-detail', 'slug' => $blog->slug]) ?>"><?= $blog->title ?></a>
                             </h5>
                             <p><?= $blog->short_description ?> </p>
                         </div>

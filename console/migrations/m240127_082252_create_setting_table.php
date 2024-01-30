@@ -16,6 +16,7 @@ class m240127_082252_create_setting_table extends Migration
             'id' => $this->primaryKey(),
             'number' => $this->string(20),
             'email' => $this->string(),
+            'map' => $this->text(),
             'imageFile' => $this->string(),
             'status' => $this->boolean()->defaultValue(true),
             'created_by' => $this->integer(),

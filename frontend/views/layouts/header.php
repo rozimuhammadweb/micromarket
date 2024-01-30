@@ -19,7 +19,8 @@ use yii\helpers\Url;
                     <div class="header__top__right">
                         <div class="header__top__right__social">
                             <?php foreach ($socials as $social): ?>
-                                <a href="<?= $social->name ?>"><img style="width: 16px" src="<?= $social->getUploadUrl('icon')?>"></a>
+                                <a target="_blank" href="<?= $social->name ?>"><img style="width: 16px"
+                                                                                    src="<?= $social->getUploadUrl('icon') ?>"></a>
                             <?php endforeach; ?>
                         </div>
                         <div class="header__top__right__language">
@@ -41,7 +42,7 @@ use yii\helpers\Url;
 
                         </div>
                         <div class="header__top__right__auth">
-                            <a href="#"><i class="fa fa-user"></i> Login</a>
+                            <a href="#"><i class="fa fa-user"></i> <?= Yii::t('app', 'login') ?></a>
                         </div>
                     </div>
                 </div>

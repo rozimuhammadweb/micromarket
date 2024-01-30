@@ -40,7 +40,6 @@ class ProductController extends Controller
         return [
             'galleryApi' => [
                 'class' => GalleryManagerAction::className(),
-                // mappings between type names and model classes (should be the same as in behaviour)
                 'types' => [
                     'product' => Product::class
                 ]

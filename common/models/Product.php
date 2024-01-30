@@ -3,6 +3,7 @@
 namespace common\models;
 
 use backend\models\GalleryImage;
+use common\components\CyrillicSlugBehavior;
 use common\modules\galleryManager\GalleryBehavior;
 use gofuroov\multilingual\behaviors\MultilingualBehavior;
 use gofuroov\multilingual\db\MultilingualLabelsTrait;
@@ -106,6 +107,10 @@ class Product extends \yii\db\ActiveRecord
                     'title', 'short_description', 'description', 'shipping'
                 ]
             ],
+            'slug' => [
+                'class' => CyrillicSlugBehavior::class,
+                'attribute' => 'title',
+            ],
         ];
     }
 
@@ -116,7 +121,8 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'short_description', 'description'], 'required'],
-            [['shipping', 'title', 'short_description', 'description'], 'safe'],
+            [['title', 'shipping', 'short_description',], 'safe'],
+            [['description'], 'string'],
             [['category_id', 'discount_percent', 'availability', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
             [['price'], 'number'],
         ];
@@ -129,6 +135,7 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'title' => 'Title',
             'category_id' => 'Kategoriya',
             'price' => 'Narxi',
             'discount_percent' => 'Chegirma %',
@@ -213,9 +220,7 @@ class Product extends \yii\db\ActiveRecord
 
     public function getRelatedProducts()
     {
-        // Check if the product has a category
         if ($this->category) {
-            // Use the category ID to find related products
             return Product::find()
                 ->where(['category_id' => $this->category->id])
                 ->andWhere(['not', ['id' => $this->id]]) // Exclude the current product

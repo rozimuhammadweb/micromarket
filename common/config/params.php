@@ -9,8 +9,8 @@ return [
     'bsDependencyEnabled' => false,
     'languageParam' => 'lang',
     'languages' => [
-        'uz' => "Uzbek",
-        'en' => "English",
+        'uz' => "uz",
+        'en' => "en",
     ],
     'defaultLanguage' => 'uz'
 ];

@@ -18,6 +18,7 @@ class m240123_062301_create_product_table extends Migration
             'price' => $this->float(),
             'discount_percent' => $this->integer(),
             'availability' => $this->integer(),
+            'slug' => $this->string(),
             'created_at' => $this->integer(),
             'updated_at' => $this->integer(),
             'created_by' => $this->integer(),

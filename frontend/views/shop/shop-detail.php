@@ -29,7 +29,8 @@
                     </div>
                     <div class="product__details__pic__slider owl-carousel">
                         <?php foreach ($product->getBehavior('galleryBehavior')->getImages() as $image): ?>
-                            <img data-imgbigurl="<?= $image->getUrl('medium') ?>" src="<?= $image->getUrl('medium') ?>" alt="">
+                            <img data-imgbigurl="<?= $image->getUrl('medium') ?>" src="<?= $image->getUrl('medium') ?>"
+                                 alt="">
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -130,7 +131,9 @@
                             </ul>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#"><?= $relatedProduct->title ?></a></h6>
+                            <h6>
+                                <a href="<?= \yii\helpers\Url::to(['shop/shop-detail', 'slug' => $relatedProduct->slug]) ?>"><?= $relatedProduct->title ?></a>
+                            </h6>
                             <h5><?= number_format($relatedProduct->price, 2) ?></h5>
                         </div>
                     </div>

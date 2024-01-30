@@ -37,7 +37,7 @@
                                     </ul>
                                     <h5><a href="#"><?= $blog->title ?></a></h5>
                                     <p><?= $blog->short_description ?> </p>
-                                    <a href="<?= \yii\helpers\Url::to(['blog/blog-detail', 'id' => $blog->id]) ?>"
+                                    <a href="<?= \yii\helpers\Url::to(['blog/blog-detail', 'slug' => $blog->slug]) ?>"
                                        class="blog__btn"><?= Yii::t('app', 'READ MORE ') ?><span
                                                 class="arrow_right"></span></a>
                                 </div>

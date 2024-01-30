@@ -27,7 +27,7 @@ class ShopController extends Controller
 
     public function actionIndex()
     {
-        $categoryFilter = Yii::$app->request->get('category');
+        $categoryFilter = Yii::$app->request->get('slug');
         $query = Product::find();
         if ($categoryFilter) {
             $query->andWhere(['category_id' => $categoryFilter]);
@@ -47,9 +47,9 @@ class ShopController extends Controller
      * @param $id
      * @return string
      */
-    public function actionShopDetail($id)
+    public function actionShopDetail($slug)
     {
-        $product = Product::findOne($id);
+        $product = Product::findOne(['slug' => $slug]);
         return $this->render('shop-detail', [
             'product' => $product
         ]);
@@ -61,5 +61,10 @@ class ShopController extends Controller
     public function actionShoppingCard()
     {
         return $this->render('shopping-card');
+    }
+
+    public function actionCheckout()
+    {
+        return $this->render('checkout');
     }
 }

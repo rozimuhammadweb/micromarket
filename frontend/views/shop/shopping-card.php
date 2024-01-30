@@ -64,8 +64,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
-                    <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                    <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                    <a href="<?= \yii\helpers\Url::to(['shop/index'])?>" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                    <a href="" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
                         Upadate Cart</a>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                         <li>Subtotal <span>$454.98</span></li>
                         <li>Total <span>$454.98</span></li>
                     </ul>
-                    <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                    <a href="<?= \yii\helpers\Url::to(['shop/checkout'])?>" class="primary-btn">PROCEED TO CHECKOUT</a>
                 </div>
             </div>
         </div>

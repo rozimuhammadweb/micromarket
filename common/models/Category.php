@@ -3,6 +3,7 @@
 namespace common\models;
 
 
+use common\components\CyrillicSlugBehavior;
 use gofuroov\multilingual\behaviors\MultilingualBehavior;
 use gofuroov\multilingual\db\MultilingualLabelsTrait;
 use gofuroov\multilingual\db\MultilingualQuery;
@@ -78,6 +79,10 @@ class Category extends \yii\db\ActiveRecord
                 'attributes' => [
                     'title',
                 ]
+            ],
+            'slug' => [
+                'class' => CyrillicSlugBehavior::class,
+                'attribute' => 'title',
             ],
         ];
     }

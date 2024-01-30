@@ -26,7 +26,7 @@
                         <h4>Department</h4>
                         <ul>
                             <?php foreach ($categories as $category): ?>
-                                <li><a href="?category=<?= $category->id ?>"><?= $category->title ?></a></li>
+                                <li><a href="?category=<?= $category->slug ?>"><?= $category->title ?></a></li>
                             <?php endforeach; ?>
 
                         </ul>
@@ -55,7 +55,7 @@
                                 <div class="latest-prdouct__slider__item">
                                     <?php /** @var TYPE_NAME $latests */
                                     foreach ($latests as $latest): ?>
-                                        <a href="<?= \yii\helpers\Url::to(['shop/shop-detail', 'id' => $latest->id]) ?>"
+                                        <a href="<?= \yii\helpers\Url::to(['shop/shop-detail', 'slug' => $latest->slug]) ?>"
                                            class="latest-product__item">
                                             <div class="latest-product__item__pic">
                                                 <img src="<?= $latest->getImage() ?>" alt="img">
@@ -82,13 +82,13 @@
                                     <ul class="featured__item__pic__hover">
                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                         <li>
-                                            <a href="<?= \yii\helpers\Url::to(['shop/shop-detail', 'id' => $product->id]) ?>"><i
+                                            <a href="<?= \yii\helpers\Url::to(['shop/shop-detail', 'slug' => $product->slug]) ?>"><i
                                                         class="fa fa-shopping-cart"></i></a></li>
                                     </ul>
                                 </div>
                                 <div class="featured__item__text">
                                     <h6>
-                                        <a href="<?= \yii\helpers\Url::to(['shop/shop-detail', 'id' => $product->id]) ?>"><?= $product->title ?></a>
+                                        <a href="<?= \yii\helpers\Url::to(['shop/shop-detail', 'slug' => $product->slug]) ?>"><?= $product->title ?></a>
                                     </h6>
                                     <h5><?= number_format($product->price, 2) ?></h5>
                                 </div>

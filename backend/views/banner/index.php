@@ -66,11 +66,30 @@ $this->params['breadcrumbs'][] = $this->title;
                             return Html::img($model->getUploadUrl('imageFile'), ['class' => 'img-thumbnail', 'style' => 'width:100px']);
                         },
                     ],
+
                     [
                         'class' => ActionColumn::className(),
                         'urlCreator' => function ($action, Banner $model, $key, $index, $column) {
                             return Url::toRoute([$action, 'id' => $model->id]);
-                        }
+                        },
+                        'buttons' => [
+                            'view' => function ($url, $model, $key) {
+                                return Html::a('<span class="fa fa-eye"></span>', $url, [
+                                    'title' => Yii::t('yii', 'View'),
+                                ]);
+                            },
+                            'update' => function ($url, $model, $key) {
+                                return Html::a('<span class="fa fa-edit"></span>', $url, [
+                                    'title' => Yii::t('yii', 'Update'),
+                                ]);
+                            },
+                            'delete' => function ($url, $model, $key) {
+                                return Html::a('<span class="glyphicon glyphicon-trash" style="color: red;"></span>', $url, [
+                                    'title' => Yii::t('yii', 'Delete'),
+                                    'data-method' => 'post',
+                                ]);
+                            },
+                        ],
                     ],
                 ],
             ]); ?>

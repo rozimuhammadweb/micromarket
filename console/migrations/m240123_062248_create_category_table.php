@@ -17,6 +17,7 @@ class m240123_062248_create_category_table extends Migration
             'sort_order' => $this->integer()->defaultValue(1),
             'is_popular' => $this->boolean(),
             'status' => $this->tinyInteger()->defaultValue(1),
+            'slug' => $this->string(),
             'imageFile' => $this->string(),
             'created_at' => $this->integer(),
             'updated_at' => $this->integer(),

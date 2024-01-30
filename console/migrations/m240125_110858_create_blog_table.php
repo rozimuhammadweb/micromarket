@@ -15,6 +15,7 @@ class m240125_110858_create_blog_table extends Migration
         $this->createTable('{{%blog}}', [
             'id' => $this->primaryKey(),
             'category_id' => $this->integer(),
+            'slug' => $this->string(),
             'status' => $this->tinyInteger()->defaultValue(1),
             'imageFile' => $this->string(),
             'created_at' => $this->integer(),

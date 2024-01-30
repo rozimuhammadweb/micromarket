@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\components\CyrillicSlugBehavior;
 use gofuroov\multilingual\behaviors\MultilingualBehavior;
 use gofuroov\multilingual\db\MultilingualLabelsTrait;
 use gofuroov\multilingual\db\MultilingualQuery;
@@ -85,6 +86,10 @@ class Blog extends \yii\db\ActiveRecord
                 'attributes' => [
                     'title', 'short_description', 'description'
                 ]
+            ],
+            'slug' => [
+                'class' => CyrillicSlugBehavior::class,
+                'attribute' => 'title',
             ],
         ];
     }

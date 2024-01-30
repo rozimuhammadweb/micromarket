@@ -1,4 +1,3 @@
-
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="/img/breadcrumb.jpg">
     <div class="container">
@@ -46,20 +45,12 @@
                             </div>
                         </div>
                         <div class="checkout__input">
-                            <p>Country<span>*</span></p>
-                            <input type="text">
-                        </div>
-                        <div class="checkout__input">
                             <p>Address<span>*</span></p>
-                            <input type="text" placeholder="Street Address" class="checkout__input__add">
+                            <input type="text" placeholder="Address" class="checkout__input__add">
                             <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
                         </div>
                         <div class="checkout__input">
                             <p>Town/City<span>*</span></p>
-                            <input type="text">
-                        </div>
-                        <div class="checkout__input">
-                            <p>Country/State<span>*</span></p>
                             <input type="text">
                         </div>
                         <div class="checkout__input">

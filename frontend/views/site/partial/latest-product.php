@@ -9,7 +9,7 @@
                         <div class="latest-prdouct__slider__item">
                             <?php /** @var TYPE_NAME $latests */
                             foreach ($latests as $latest): ?>
-                                <a href="<?= \yii\helpers\Url::to(['site/shop-detail', 'id' => $latest->id]) ?>"
+                                <a href="<?= \yii\helpers\Url::to(['site/shop-detail', 'slug' => $latest->slug]) ?>"
                                    class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="<?= $latest->getImage() ?>" alt="img">
@@ -66,7 +66,7 @@
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
                             <?php foreach ($reviews as $review): ?>
-                                <a href="<?= \yii\helpers\Url::to(['site/shop-detail', 'id' => $review->id]) ?>"
+                                <a href="<?= \yii\helpers\Url::to(['site/shop-detail', 'slug' => $review->slug]) ?>"
                                    class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="<?= $review->getImage() ?>" alt="">
