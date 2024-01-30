@@ -18,19 +18,26 @@ use yii\helpers\Url;
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            <?php foreach ($socials as $social): ?>
+                                <a href="<?= $social->name ?>"><img style="width: 16px" src="<?= $social->getUploadUrl('icon')?>"></a>
+                            <?php endforeach; ?>
                         </div>
                         <div class="header__top__right__language">
                             <img src="language.png" alt="">
                             <div><?= Yii::$app->language ?></div>
                             <span class="arrow_carrot-down"></span>
                             <ul>
-                                <li><a href="<?= Url::current(['lang' => 'uz']) ?>">O'zbekcha</a></li>
-                                <li><a href="<?= Url::current(['lang' => 'en']) ?>">English</a></li>
+                                <?php if (Yii::$app->language !== 'uz'): ?>
+                                    <li><a href="<?= Url::current(['lang' => 'uz']) ?>"><i class="fa fa-language"></i>
+                                            Uzbekcha</a></li>
+                                <?php endif; ?>
+
+                                <?php if (Yii::$app->language !== 'en'): ?>
+                                    <li><a href="<?= Url::current(['lang' => 'en']) ?>"><i class="fa fa-globe"></i>
+                                            English</a></li>
+                                <?php endif; ?>
                             </ul>
+
 
                         </div>
                         <div class="header__top__right__auth">

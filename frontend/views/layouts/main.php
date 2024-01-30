@@ -13,7 +13,8 @@ use yii\bootstrap4\Html;
 
 AppAsset::register($this);
 $categories = Category::getCategories();
-$setting = Setting::getSetting()
+$setting = Setting::getSetting();
+$socials = \common\models\Social::find()->all();
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>
@@ -28,14 +29,14 @@ $setting = Setting::getSetting()
     <?php $this->beginBody(); ?>
     <body>
     <?= $this->render('hamburger') ?>
-    <?= $this->render('header', ['setting' => $setting]) ?>
+    <?= $this->render('header', ['setting' => $setting, 'socials' => $socials]) ?>
     <?= $this->render('hero', ['categories' => $categories, 'setting' => $setting]) ?>
     <?= Breadcrumbs::widget([
         'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
     ]) ?>
     <?= Alert::widget() ?>
     <?= $content ?>
-    <?= $this->render('footer', ['setting' => $setting]) ?>
+    <?= $this->render('footer', ['setting' => $setting, 'socials' => $socials]) ?>
     <?php $this->endBody(); ?>
 
     </body>

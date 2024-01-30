@@ -31,8 +31,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attributes' => [
                     'id',
                     'name',
-                    'status',
-                    'icon',
+                    [
+                        'attribute' => 'status',
+                        'value' => function ($model) {
+                            return $model->status == 1 ? 'Active' : 'In Active';
+                        },
+                    ],
+                    [
+                        'attribute' => 'icon',
+                        'format' => 'raw',
+                        'value' => function ($model) {
+                            return Html::img($model->getUploadUrl('icon'), ['class' => 'img-thumbnail', 'style' => 'width:50px ']);
+                        },
+                    ],
                 ],
             ]) ?>
         </div>
