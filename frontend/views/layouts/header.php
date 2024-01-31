@@ -24,7 +24,6 @@ use yii\helpers\Url;
                             <?php endforeach; ?>
                         </div>
                         <div class="header__top__right__language">
-                            <img src="language.png" alt="">
                             <div><?= Yii::$app->language ?></div>
                             <span class="arrow_carrot-down"></span>
                             <ul>
@@ -61,16 +60,16 @@ use yii\helpers\Url;
                 <nav class="header__menu">
                     <ul>
                         <li<?= Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index' ? ' class="active"' : '' ?>>
-                            <a href="<?= \yii\helpers\Url::to(['site/index']) ?>"><?= Yii::t('app', 'Home') ?></a>
+                            <a href="<?= \yii\helpers\Url::to(['site/index']) ?>"><?= Yii::t('app', 'home') ?></a>
                         </li>
                         <li<?= Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'shop' ? ' class="active"' : '' ?>>
-                            <a href="<?= \yii\helpers\Url::to(['shop/index']) ?>"><?= Yii::t('app', 'Shop') ?></a>
+                            <a href="<?= \yii\helpers\Url::to(['shop/index']) ?>"><?= Yii::t('app', 'shop') ?></a>
                         </li>
                         <li<?= Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'blog' ? ' class="active"' : '' ?>>
-                            <a href="<?= \yii\helpers\Url::to(['blog/index']) ?>"><?= Yii::t('app', 'Blog') ?></a>
+                            <a href="<?= \yii\helpers\Url::to(['blog/index']) ?>"><?= Yii::t('app', 'blog') ?></a>
                         </li>
                         <li<?= Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'contact' ? ' class="active"' : '' ?>>
-                            <a href="<?= \yii\helpers\Url::to(['site/contact']) ?>"><?= Yii::t('app', 'Contact') ?></a>
+                            <a href="<?= \yii\helpers\Url::to(['site/contact']) ?>"><?= Yii::t('app', 'contact') ?></a>
                         </li>
                     </ul>
                 </nav>
@@ -82,7 +81,7 @@ use yii\helpers\Url;
                         <li><a href="<?= Url::to(['shop/shopping-card']) ?>"><i class="fa fa-shopping-bag"></i>
                                 <span>3</span></a></li>
                     </ul>
-                    <div class="header__cart__price">item: <span>$150.00</span></div>
+                    <div class="header__cart__price"><?= Yii::t('app', 'item') ?>: <span>$150.00</span></div>
                 </div>
             </div>
         </div>

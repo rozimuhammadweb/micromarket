@@ -7,6 +7,7 @@ use common\models\Product;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii\web\Response;
 
 class ShopController extends Controller
 {
@@ -57,6 +58,16 @@ class ShopController extends Controller
         return $this->render('shop-detail', [
             'product' => $product
         ]);
+    }
+
+    public function actionAddToCart()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $product_id = Yii::$app->request->post('product_id');
+        $cart = Yii::$app->session->get('cart', []);
+        $cart[] = $product_id;
+        Yii::$app->session->set('cart', $cart);
+        return ['success' => true];
     }
 
     /**

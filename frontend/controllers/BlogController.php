@@ -38,7 +38,7 @@ class BlogController extends Controller
         $blogsQuery = Blog::find()->orderBy(['id' => SORT_DESC]);
 
         if ($blogCategoryFilter) {
-            $blogsQuery->andWhere(['id' => $blogCategoryFilter]);
+            $blogsQuery->andWhere(['slug' => $blogCategoryFilter]);
         }
 
         $blogs = $blogsQuery->all();

@@ -15,5 +15,17 @@ return [
         'cache' => [
             'class' => \yii\caching\FileCache::class,
         ],
+        'i18n' => [
+            'translations' =>[
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/language',
+                    'fileMap' => [
+                        'frontend/app'       => 'app.php',
+                        'frontend/app/error' => 'error.php',
+                    ],
+                ],
+            ],
+        ],
     ],
 ];
