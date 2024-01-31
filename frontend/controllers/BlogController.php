@@ -9,6 +9,7 @@ use common\models\Tags;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class BlogController extends Controller
 {
@@ -33,14 +34,14 @@ class BlogController extends Controller
      */
     public function actionIndex()
     {
-        $blogCategoryFilter = Yii::$app->request->get('slug');
+        $blogCategoryFilter = Yii::$app->request->get('category');
         $blogsQuery = Blog::find()->orderBy(['id' => SORT_DESC]);
 
         if ($blogCategoryFilter) {
-            $blogsQuery->andWhere(['slug' => $blogCategoryFilter]);
+            $blogsQuery->andWhere(['id' => $blogCategoryFilter]);
         }
-        $blogs = $blogsQuery->all();
 
+        $blogs = $blogsQuery->all();
         $tags = Tags::getTags();
         $blogCategories = CategoryBlog::getCategoriesBlog();
         $recentNews = Blog::getRecentNews();
@@ -64,4 +65,5 @@ class BlogController extends Controller
             'blog' => $blog
         ]);
     }
+
 }

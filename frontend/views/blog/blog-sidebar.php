@@ -30,7 +30,7 @@ $recentNews = Blog::getRecentNews();
             <h4><?= Yii::t('app', 'Recent News') ?></h4>
             <div class="blog__sidebar__recent">
                 <?php foreach ($recentNews as $news): ?>
-                    <a href="#" class="blog__sidebar__recent__item">
+                    <a href="<?= \yii\helpers\Url::to(['blog/blog-detail', 'slug' =>$news->slug])?>" class="blog__sidebar__recent__item">
                         <div class="blog__sidebar__recent__item__pic">
                             <img style="width: 130px" src="<?= $news->getUploadUrl('imageFile') ?>" alt="">
                         </div>
@@ -46,7 +46,7 @@ $recentNews = Blog::getRecentNews();
             <h4><?= Yii::t('app', 'Search By') ?></h4>
             <div class="blog__sidebar__item__tags">
                 <?php foreach ($tags as $tag): ?>
-                    <a href="?tags=<?= $tag->id ?>"><?= $tag->title ?></a>
+                    <a href=""><?= $tag->title ?></a>
                 <?php endforeach; ?>
             </div>
         </div>

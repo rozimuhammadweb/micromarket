@@ -30,18 +30,22 @@ class ShopController extends Controller
         $categoryFilter = Yii::$app->request->get('slug');
         $query = Product::find();
         if ($categoryFilter) {
-            $query->andWhere(['category_id' => $categoryFilter]);
+            $category = Category::findOne(['slug' => $categoryFilter]);
+            if ($category) {
+                $query->andWhere(['category_id' => $category->id]);
+            }
         }
         $products = $query->orderBy(['id' => SORT_DESC])->all();
-
         $categories = Category::getCategories();
         $latests = Product::getLatest();
+
         return $this->render('shop', [
             'categories' => $categories,
             'products' => $products,
             'latests' => $latests,
         ]);
     }
+
 
     /**
      * @param $id

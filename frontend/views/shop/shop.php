@@ -26,7 +26,11 @@
                         <h4>Department</h4>
                         <ul>
                             <?php foreach ($categories as $category): ?>
-                                <li><a href="?category=<?= $category->slug ?>"><?= $category->title ?></a></li>
+                                <li>
+                                    <a href="<?= \yii\helpers\Url::to(['shop/index', 'slug' => $category->slug]) ?>">
+                                        <?= $category->title ?>
+                                    </a>
+                                </li>
                             <?php endforeach; ?>
 
                         </ul>

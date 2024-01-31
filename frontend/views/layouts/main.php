@@ -28,7 +28,7 @@ $socials = \common\models\Social::find()->all();
     </head>
     <?php $this->beginBody(); ?>
     <body>
-    <?= $this->render('hamburger') ?>
+    <?= $this->render('hamburger', ['setting' => $setting, 'socials' => $socials]) ?>
     <?= $this->render('header', ['setting' => $setting, 'socials' => $socials]) ?>
     <?= $this->render('hero', ['categories' => $categories, 'setting' => $setting]) ?>
     <?= Breadcrumbs::widget([

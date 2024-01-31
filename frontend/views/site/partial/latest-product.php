@@ -7,10 +7,8 @@
                     <h4><?= Yii::t('app', 'Latest Products') ?></h4>
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
-                            <?php /** @var TYPE_NAME $latests */
-                            foreach ($latests as $latest): ?>
-                                <a href="<?= \yii\helpers\Url::to(['site/shop-detail', 'slug' => $latest->slug]) ?>"
-                                   class="latest-product__item">
+                            <?php foreach ($latests as $latest): ?>
+                                <a href="<?= \yii\helpers\Url::to(['shop/shop-detail', 'slug' => $latest->slug]) ?>" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="<?= $latest->getImage() ?>" alt="img">
                                     </div>
@@ -20,6 +18,7 @@
                                     </div>
                                 </a>
                             <?php endforeach; ?>
+
                         </div>
                     </div>
                 </div>
@@ -66,7 +65,7 @@
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
                             <?php foreach ($reviews as $review): ?>
-                                <a href="<?= \yii\helpers\Url::to(['site/shop-detail', 'slug' => $review->slug]) ?>"
+                                <a href="<?= \yii\helpers\Url::to(['shop/shop-detail', 'slug' => $review->slug]) ?>"
                                    class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="<?= $review->getImage() ?>" alt="">

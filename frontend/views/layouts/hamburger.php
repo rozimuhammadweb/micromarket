@@ -1,24 +1,38 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
+
 <!-- Humberger Begin -->
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="#"><img src="img/logo.png" alt=""></a>
+        <a href="#"><img src="/img/logo.png" alt=""></a>
     </div>
     <div class="humberger__menu__cart">
         <ul>
             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            <li><a href="<?= Url::to(['shop/checkout']) ?>"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
         </ul>
         <div class="header__cart__price">item: <span>$150.00</span></div>
     </div>
     <div class="humberger__menu__widget">
         <div class="header__top__right__language">
-            <img src="img/language.png" alt="">
-            <div>English</div>
+            <div><?= Yii::$app->language ?></div>
             <span class="arrow_carrot-down"></span>
             <ul>
-                <li><a href="#">Spanis</a></li>
-                <li><a href="#">English</a></li>
+                <?php
+
+                if (Yii::$app->language !== 'uz'): ?>
+                    <li><a href="<?= Url::current(['lang' => 'uz']) ?>"><i class="fa fa-language"></i>
+                            Uzbekcha</a></li>
+                <?php endif; ?>
+
+                <?php if (Yii::$app->language !== 'en'): ?>
+                    <li><a href="<?= Url::current(['lang' => 'en']) ?>"><i class="fa fa-globe"></i>
+                            English</a></li>
+                <?php endif; ?>
             </ul>
         </div>
         <div class="header__top__right__auth">
@@ -27,31 +41,34 @@
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
-            <li class="active"><a href="<?= \yii\helpers\Url::home() ?>">Home</a></li>
-            <li><a href="<?= \yii\helpers\Url::to(['site/shop']) ?>">Shop</a></li>
-            <li><a href="#">Pages</a>
-                <ul class="header__menu__dropdown">
-                    <li><a href="./shop-details.html">Shop Details</a></li>
-                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                    <li><a href="./checkout.html">Check Out</a></li>
-                    <li><a href="./blog-details.html">Blog Details</a></li>
-                </ul>
-            </li>
-            <li><a href="<?= \yii\helpers\Url::to(['site/blog']) ?>">Blog</a></li>
-            <li><a href="<?= \yii\helpers\Url::to(['site/contact']) ?>">Contact</a></li>
+            <
+            <ul>
+                <li<?= Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index' ? ' class="active"' : '' ?>>
+                    <a href="<?= \yii\helpers\Url::to(['site/index']) ?>"><?= Yii::t('app', 'Home') ?></a>
+                </li>
+                <li<?= Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'shop' ? ' class="active"' : '' ?>>
+                    <a href="<?= \yii\helpers\Url::to(['shop/index']) ?>"><?= Yii::t('app', 'Shop') ?></a>
+                </li>
+                <li<?= Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'blog' ? ' class="active"' : '' ?>>
+                    <a href="<?= \yii\helpers\Url::to(['blog/index']) ?>"><?= Yii::t('app', 'Blog') ?></a>
+                </li>
+                <li<?= Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'contact' ? ' class="active"' : '' ?>>
+                    <a href="<?= \yii\helpers\Url::to(['site/contact']) ?>"><?= Yii::t('app', 'Contact') ?></a>
+                </li>
+            </ul>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
     <div class="header__top__right__social">
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-linkedin"></i></a>
-        <a href="#"><i class="fa fa-pinterest-p"></i></a>
+        <?php foreach ($socials as $social): ?>
+            <a target="_blank" href="<?= $social->name ?>"><img style="width: 16px"
+                                                                src="<?= $social->getUploadUrl('icon') ?>"></a>
+        <?php endforeach; ?>
     </div>
     <div class="humberger__menu__contact">
         <ul>
-            <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-            <li>Free Shipping for all Order of $99</li>
+            <li><i class="fa fa-envelope"></i> <?= $setting->email ?></li>
+            <li><?= $setting->shipping_order ?></li>
         </ul>
     </div>
 </div>

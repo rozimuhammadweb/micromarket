@@ -72,7 +72,6 @@ $model = new  MessageData();
         <div class="map-inside">
             <i class="icon_pin"></i>
             <div class="inside-widget">
-                <h4>New York</h4>
                 <ul>
                     <li><?= Yii::t('app', 'Phone') ?>: <?= $setting->number ?></li>
                     <li><?= Yii::t('app', 'Address') ?>: <?= $setting->address ?></li>
@@ -102,7 +101,7 @@ $model = new  MessageData();
                 </div>
                 <div class="col-lg-12 text-center">
                     <?= $form->field($model, 'message')->textarea(['placeholder' => 'Your Message'])->label(false) ?>
-                    <button type="submit" class="site-btn"><?= Yii::t('app', 'SEND MESSAGE') ?></button>
+                    <button type="submit" class="site-btn"><?= Yii::t('app', 'send') ?></button>
                 </div>
             </div>
             <?php \yii\bootstrap4\ActiveForm::end() ?>

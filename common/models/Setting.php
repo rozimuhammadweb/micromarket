@@ -88,10 +88,11 @@ class Setting extends \yii\db\ActiveRecord
     {
         return [
             [['number', 'email'], 'required'],
-            [['number', 'email', 'address', 'shipping_order', 'working_time'], 'safe'],
+            [['number', 'email', 'map', 'address', 'shipping_order', 'working_time'], 'safe'],
             [['status', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             ['number', 'match', 'pattern' => '/\+[9][9][8] [389][013789] [0-9][0-9][0-9] [0-9][0-9] [0-9][0-9]/'],
-            [['email'], 'string', 'max' => 255],
+            [['email'], 'string', 'max' => 50],
+            [['map'], 'string'],
             [['imageFile'], 'file'],
         ];
     }

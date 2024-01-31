@@ -53,13 +53,6 @@
                         <li><b><?= Yii::t('app', 'Availability') ?></b> <span><?= $product->availability ?></span></li>
                         <li><b><?= Yii::t('app', 'Shipping') ?></b>
                             <span>1 day shipping. <samp>Free pickup today</samp></span></li>
-                        <li><b><?= Yii::t('app', 'Share on') ?></b>
-                            <div class="share">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
-                            </div>
                         </li>
                     </ul>
                 </div>
@@ -75,10 +68,6 @@
                             <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
                                aria-selected="false"><?= Yii::t('app', 'Information') ?></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                               aria-selected="false"><?= Yii::t('app', 'Reviews') ?> <span>(1)</span></a>
-                        </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
@@ -89,13 +78,6 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
-                            <div class="product__details__tab__desc">
-                                <h6><?= Yii::t('app', 'Products Infomation') ?></h6>
-                                <p><?= $product->description ?></p>
-                                <p><?= $product->description ?></p>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <div class="product__details__tab__desc">
                                 <h6><?= Yii::t('app', 'Products Infomation') ?></h6>
                                 <p><?= $product->description ?></p>

@@ -3,6 +3,7 @@
 namespace common\models;
 
 use gofuroov\multilingual\behaviors\MultilingualBehavior;
+use gofuroov\multilingual\db\MultilingualLabelsTrait;
 use yii\db\ActiveRecord;
 
 /**
@@ -15,6 +16,9 @@ use yii\db\ActiveRecord;
  */
 class Tags extends \yii\db\ActiveRecord
 {
+    use MultilingualLabelsTrait;
+
+
     /**
      * {@inheritdoc}
      */

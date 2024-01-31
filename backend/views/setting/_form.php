@@ -26,6 +26,9 @@ use yii\widgets\MaskedInput;
                 <div class="col-md-12">
                     <?= $form->field($model, 'working_time')->textInput() ?>
                 </div>
+                <div class="col-md-12">
+                    <?= $form->field($model, 'map')->textInput(['placeholder' => 'https://']) ?>
+                </div>
                 <div class="col-md-6">
                     <?= $form->field($model, 'number')->widget(MaskedInput::class, [
                         'mask' => '\+\9\9\8 99 999 99 99',
