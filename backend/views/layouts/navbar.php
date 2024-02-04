@@ -55,16 +55,6 @@ use yii\helpers\Url;
                 <i class="fas fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu" style="left: inherit;">
-                <div class="d-flex justify-content-center">
-                    <img src="/admin/dist/img/AdminLTELogo.png" class="img-circle w-25 " alt="User Image">
-                </div>
-                <li class="user-header bg-light">
-                    <?php if (Yii::$app->user->isGuest) : ?>
-                        <?= Html::tag('div', Html::a('Login', ['/site/login'], ['class' => ['text-decoration-none']])) ?>
-                    <?php else : ?>
-                        <?= Html::a(Yii::$app->user->identity->first_name, '#', ['class' => 'text-decoration-none']) ?>
-                    <?php endif; ?>
-                </li>
                 <li class="user-footer">
                     <div class="d-flex justify-content-between">
                         <?php if (Yii::$app->user->isGuest) : ?>
@@ -72,9 +62,19 @@ use yii\helpers\Url;
                         <?php else : ?>
                             <a class="btn btn-default btn-flat" href="<?= Url::to(['site/user']) ?>"><span
                                         class="fas fa-user-cog"></span> Profil</a>
-                            <?= Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex']) . Html::submitButton('<i class="fa fa-sign-out-alt"></i> (' . Yii::$app->user->identity->username . ')', ['class' => 'btn btn-default btn-flat logout text-decoration-none']) . Html::endForm(); ?>
+                            <?= Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex']) . Html::submitButton('<i class="fa fa-sign-out-alt"></i> (' . Yii::$app->user->identity->first_name . ')', ['class' => 'btn btn-default btn-flat logout text-decoration-none']) . Html::endForm(); ?>
                         <?php endif; ?>
                     </div>
+                </li>
+                <div class="d-flex justify-content-center pt-5 mt-5">
+                    <img src="/admin/dist/img/user2-160x160.jpg" class="img-circle w-25 " alt="User Image">
+                </div>
+                <li class="user-header bg-light">
+                    <?php if (Yii::$app->user->isGuest) : ?>
+                        <?= Html::tag('div', Html::a('Login', ['/site/login'], ['class' => ['text-decoration-none']])) ?>
+                    <?php else : ?>
+                        <?= Html::a(Yii::$app->user->identity->first_name, '#', ['class' => 'text-bold']) ?>
+                    <?php endif; ?>
                 </li>
             </ul>
         </li>

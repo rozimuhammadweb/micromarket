@@ -19,7 +19,7 @@ use yii\helpers\Url;
                 <img src="/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="<?= Url::to(['/']) ?>" class="d-block"><?= Yii::$app->user->identity->username ?></a>
+                <a href="<?= Url::to(['/']) ?>" class="d-block"><?= Yii::$app->user->identity->first_name ?></a>
             </div>
         </div>
         <nav class="mt-2">
