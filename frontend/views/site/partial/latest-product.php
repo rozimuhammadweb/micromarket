@@ -4,11 +4,12 @@
         <div class="row">
             <div class="col-lg-4 col-md-6">
                 <div class="latest-product__text">
-                    <h4><?= Yii::t('app', 'Latest Products') ?></h4>
+                    <h4><?= Yii::t('app', 'latest') ?></h4>
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
                             <?php foreach ($latests as $latest): ?>
-                                <a href="<?= \yii\helpers\Url::to(['shop/shop-detail', 'slug' => $latest->slug]) ?>" class="latest-product__item">
+                                <a href="<?= \yii\helpers\Url::to(['shop/shop-detail', 'slug' => $latest->slug]) ?>"
+                                   class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="<?= $latest->getImage() ?>" alt="img">
                                     </div>
@@ -25,7 +26,7 @@
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="latest-product__text">
-                    <h4><?= Yii::t('app', 'Top Rated Products') ?></h4>
+                    <h4><?= Yii::t('app', 'top') ?></h4>
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
                             <a href="#" class="latest-product__item">
@@ -61,7 +62,7 @@
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="latest-product__text">
-                    <h4>Review Products</h4>
+                    <h4><?= Yii::t('app', 'review') ?></h4>
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
                             <?php foreach ($reviews as $review): ?>

@@ -13,4 +13,9 @@ return array (
   'search' => 'Qidirish',
   'need' => 'Sizga nima kerak?',
   'support ' => '24/7 Qo\'llab-quvvatlash',
+  'featured_product' => 'Tanlangan mahsulot',
+  'all' => 'Hammasi',
+  'latest' => 'Eng so\'nggi mahsulotlar',
+  'top' => 'Eng yuqori baholanganlar',
+  'review' => 'Yaqinda Ko\'rilganlar',
 );

@@ -13,4 +13,9 @@ return array (
   'search' => 'Search',
   'need' => 'What do yo u need?',
   'support ' => 'Support 24/7 time',
+  'featured_product' => 'Featured Product',
+  'all' => 'All',
+  'latest' => 'Latest Products',
+  'top' => 'Top Rated Products',
+  'review' => 'Review Products',
 );

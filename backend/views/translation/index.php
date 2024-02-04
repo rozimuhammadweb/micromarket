@@ -1,11 +1,13 @@
 <?php
 
 use common\models\Translation;
-use yii\helpers\Html;
-use yii\helpers\Url;
+use yii\bootstrap4\LinkPager;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\Pjax;
+
 /** @var yii\web\View $this */
 /** @var common\models\search\TranslationSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
@@ -16,9 +18,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="card card-primary card-outline">
     <div class="card-body">
         <div class="translation-index">
-
-            <h1><?= Html::encode($this->title) ?></h1>
-
             <p>
                 <?= Html::a('<i class="fa fa-plus"></i>', ['create'], ['class' => 'btn btn-primary  ']) ?>
             </p>
@@ -54,6 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ]); ?>
 
             <?php Pjax::end(); ?>
+
         </div>
     </div>
 </div>
