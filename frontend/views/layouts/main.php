@@ -6,6 +6,7 @@
 
 use common\models\Category;
 use common\models\Setting;
+use common\models\Social;
 use common\widgets\Alert;
 use frontend\assets\AppAsset;
 use yii\bootstrap4\Breadcrumbs;
@@ -13,7 +14,7 @@ use yii\bootstrap4\Breadcrumbs;
 AppAsset::register($this);
 $categories = Category::getCategories();
 $setting = Setting::getSetting();
-$socials = \common\models\Social::find()->all();
+$socials = Social::find()->all();
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>

@@ -18,4 +18,5 @@ return array (
   'latest' => 'Latest Products',
   'top' => 'Top Rated Products',
   'review' => 'Review Products',
+  'social' => 'Join Our Social Channel Now',
 );

@@ -18,4 +18,5 @@ return array (
   'latest' => 'Eng so\'nggi mahsulotlar',
   'top' => 'Eng yuqori baholanganlar',
   'review' => 'Yaqinda Ko\'rilganlar',
+  'social' => 'Ijtimoiy kanalimizga hoziroq qo\'shiling',
 );
