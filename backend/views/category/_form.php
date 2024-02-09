@@ -6,7 +6,7 @@ use yii\helpers\Html;
 
 /** @var yii\web\View $this */
 /** @var common\models\Category $model */
-/** @var yii\widgets\ActiveForm $form */
+/** @var yii\bootstrap4\ActiveForm $form */
 ?>
 <div class="card card-primary card-outline">
     <div class="card-body">
